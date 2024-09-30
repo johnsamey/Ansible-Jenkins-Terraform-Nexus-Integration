@@ -27,7 +27,7 @@ resource "aws_internet_gateway" "nexus_igw" {
 
 resource "aws_route_table" "nexus_route_table" {
   for_each = var.my-routes-data
-  vpc_id = aws_vpc.main[each.value[0]].id
+  vpc_id = aws_vpc.nexus_vpc[each.value[0]].id
 
   route {
     cidr_block = each.value[1]
@@ -38,7 +38,7 @@ resource "aws_route_table" "nexus_route_table" {
   tags = {
     Name = each.key
   }
-  depends_on = [ aws_internet_gateway.gw ]
+  depends_on = [ aws_internet_gateway.nexus_igw ]
 }
 
 resource "aws_route_table_association" "terraform-associate" {
