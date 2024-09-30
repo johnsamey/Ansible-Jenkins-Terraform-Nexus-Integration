@@ -1,0 +1,7 @@
+- name: first-play
+  hosts: app
+  user: john
+  become: yes
+  vars:
+  roles:
+    - roles
