@@ -1,7 +1,5 @@
 ---
 # tasks file for ./roles
----
-# tasks file for ./roles
 - name: Update system packages
   yum:
     name: '*'
