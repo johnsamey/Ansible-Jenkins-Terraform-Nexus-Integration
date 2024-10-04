@@ -63,7 +63,7 @@ pipeline {
         stage('Commit Inventory File') {
             agent {
                 docker {
-                    image 'github' // Terraform Docker image
+                    image 'terraform' // Terraform Docker image
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
