@@ -23,8 +23,8 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/sh
     terraform --version || echo "Terraform installation failed"
 
 # Copy SSH and AWS credentials (ensure these directories are mounted during runtime)
-COPY agents_data/.ssh /root/.ssh
-COPY agents_data/.aws /root/.aws
+COPY /home/john/.ssh /root/.ssh
+COPY /home/john/.aws /root/.aws
 
 # Set correct permissions for SSH keys and AWS credentials
 RUN chmod 700 /root/.ssh && \
@@ -32,8 +32,8 @@ RUN chmod 700 /root/.ssh && \
     chmod 600 /root/.aws/*
 
 # Configure Git user credentials for SSH access
-RUN git config --global user.name "Ahmed1958" && \
-    git config --global user.email "ahmed195069@feng.bu.edu.eg"
+RUN git config --global user.name "johnsamey" && \
+    git config --global user.email "johnsamyut@gmail.com"
 
 # Set the working directory
 WORKDIR /workspace
