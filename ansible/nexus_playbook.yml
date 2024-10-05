@@ -1,6 +1,6 @@
 - name: first-play
   hosts: app
-  user: john
+  user: ec2-user
   become: yes
   vars:
   roles:
