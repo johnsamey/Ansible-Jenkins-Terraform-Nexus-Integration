@@ -12,7 +12,7 @@ pipeline {
         stage('Clone Repository') {
             agent {
                 docker {
-                    image 'terraform' // Terraform Docker image
+                    image 'my-terraform' // Terraform Docker image
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
         stage('Terraform Init and Apply') {
             agent {
                 docker {
-                    image 'github' // Terraform Docker image
+                    image 'my-terraform' // Terraform Docker image
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
@@ -63,7 +63,7 @@ pipeline {
         stage('Commit Inventory File') {
             agent {
                 docker {
-                    image 'terraform' // Terraform Docker image
+                    image 'my-terraform' // Terraform Docker image
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
