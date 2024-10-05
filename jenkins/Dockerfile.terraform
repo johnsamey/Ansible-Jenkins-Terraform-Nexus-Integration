@@ -23,8 +23,8 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/sh
     terraform --version || echo "Terraform installation failed"
 
 # Copy SSH and AWS credentials (ensure these directories are mounted during runtime)
-COPY /home/john/.ssh /root/.ssh
-COPY /home/john/.aws /root/.aws
+COPY ../../.ssh /root/.ssh
+COPY ../../.aws /root/.aws
 
 # Set correct permissions for SSH keys and AWS credentials
 RUN chmod 700 /root/.ssh && \
@@ -42,4 +42,5 @@ WORKDIR /workspace
 EXPOSE 22
 
 # Set the default command (optional)
-ENTRYPOINT ["/bin/bash"]
+# ENTRYPOINT ["/bin/bash"]
+CMD ["tail", "-f", "/dev/null"]
