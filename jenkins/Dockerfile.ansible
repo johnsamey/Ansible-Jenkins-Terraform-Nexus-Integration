@@ -26,4 +26,5 @@ WORKDIR /ansible
 EXPOSE 22
 
 # Default command: Display the installed Ansible version
-CMD ["ansible", "--version"]
+# CMD ["ansible", "--version"]
+CMD ["tail", "-f", "/dev/null"]
