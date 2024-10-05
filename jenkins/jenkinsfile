@@ -93,10 +93,10 @@ pipeline {
                     echo 'Running Ansible playbook...'
                     unstash 'repo_content' // Retrieve the stashed repository content
                     withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                        dir("${REPO_DIR}/nuxus_ansible") {
+                        dir("${REPO_DIR}/ansible") {
                             sh """
                             chmod 400 nexus-task.pem
-                            ansible-playbook nuxus_playbook.yml -i ../terraform/inventory.txt --private-key nexus-task.pem --ssh-extra-args '-o StrictHostKeyChecking=no'
+                            ansible-playbook nexus_playbook.yml -i ../terraform/inventory.txt --private-key nexus-task.pem --ssh-extra-args '-o StrictHostKeyChecking=no'
                             """
                         }
                     }
